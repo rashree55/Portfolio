@@ -12,7 +12,7 @@ const navLinks = [
 ];
 
 const GITHUB_URL = 'https://github.com/rashree55';
-const RESUME_URL = '/Rajeshree_resume.pdf';
+const RESUME_URL = '/resume.pdf';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
