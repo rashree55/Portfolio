@@ -7,25 +7,24 @@ import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
 import emailjs from '@emailjs/browser';
 
-
-const EMAILJS_SERVICE_ID = 'service_syf6p9p';
-const EMAILJS_TEMPLATE_ID = 'template_3zobgj3';
-const EMAILJS_PUBLIC_KEY = 'OOw-tfD-_CKvJa2uC';
-
 const GITHUB_URL = 'https://github.com/rashree55';
 const LINKEDIN_URL = 'https://www.linkedin.com/in/rajeshree-chaudhari-2a66a0203/';
 const EMAIL = 'rajeshreechaudhari515@gmail.com';
 
 const ContactSection = () => {
   const formRef = useRef<HTMLFormElement>(null);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -37,11 +36,13 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
+      if (!formRef.current) return;
+
       await emailjs.sendForm(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        formRef.current!,
-        EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
       toast({
@@ -49,7 +50,11 @@ const ContactSection = () => {
         description: "Thank you for reaching out. I'll get back to you soon.",
       });
 
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+      });
     } catch (error) {
       console.error('EmailJS error:', error);
       toast({
@@ -95,7 +100,7 @@ const ContactSection = () => {
                   Get in Touch
                 </h3>
                 <p className="text-muted-foreground mb-6">
-                  I'm currently open to internship opportunities, freelance projects, and collaborations. 
+                  I'm currently open to internship opportunities, freelance projects, and collaborations.
                   Feel free to reach out through the form or connect with me on social platforms.
                 </p>
               </div>
@@ -135,9 +140,11 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              {/* Follow Me Section */}
+              {/* Social Links */}
               <div>
-                <h4 className="font-heading font-medium text-foreground mb-4">Follow Me</h4>
+                <h4 className="font-heading font-medium text-foreground mb-4">
+                  Follow Me
+                </h4>
                 <div className="flex items-center gap-3">
                   <a
                     href={GITHUB_URL}
@@ -179,7 +186,6 @@ const ContactSection = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="bg-card border-border focus:border-primary"
                   />
                 </div>
 
@@ -195,7 +201,6 @@ const ContactSection = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="bg-card border-border focus:border-primary"
                   />
                 </div>
 
@@ -211,7 +216,6 @@ const ContactSection = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="bg-card border-border focus:border-primary resize-none"
                   />
                 </div>
 
