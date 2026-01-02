@@ -19,7 +19,7 @@ const HeroSection = () => {
 
       <div className="section-container relative z-10 py-20">
         <div className="max-w-3xl mx-auto text-center">
-          {/* Status badge */}
+        
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -30,7 +30,6 @@ const HeroSection = () => {
             <span className="text-sm text-muted-foreground">Open to opportunities</span>
           </motion.div>
 
-          {/* Main heading */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -41,7 +40,6 @@ const HeroSection = () => {
             <span className="gradient-text">Rashree</span>
           </motion.h1>
 
-          {/* Role */}
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -51,7 +49,6 @@ const HeroSection = () => {
             Full Stack Developer | Backend & AI-focused
           </motion.p>
 
-          {/* Value statement */}
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -61,7 +58,6 @@ const HeroSection = () => {
             Building scalable web applications and AI-driven solutions with a focus on clean code, performance, and user experience.
           </motion.p>
 
-          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -81,7 +77,6 @@ const HeroSection = () => {
             </Button>
           </motion.div>
 
-          {/* Social Links */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

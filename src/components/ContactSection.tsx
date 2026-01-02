@@ -215,7 +215,7 @@ const ContactSection = () => {
                   />
                 </div>
 
-                <Button type="submit" size="lg" className="w-full gap-2" disabled={isSubmitting}>
+                <Button type="submit" className="w-full gap-2" disabled={isSubmitting}>
                   {isSubmitting ? (
                     <>
                       <div className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />

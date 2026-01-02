@@ -23,8 +23,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-
-      // Determine active section based on scroll position
+      // active tabs code
       const sections = navLinks.map(link => link.href.substring(1));
       const scrollPosition = window.scrollY + 100;
 
@@ -38,12 +37,11 @@ const Navbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll(); 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    // Check for saved theme preference or system preference
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
@@ -75,7 +73,7 @@ const Navbar = () => {
     >
       <div className="section-container">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
+          
           <a href="#home" className="group flex items-center gap-1 font-heading font-bold text-2xl text-foreground hover:text-primary transition-colors">
             <span className="relative">
               R
@@ -84,7 +82,6 @@ const Navbar = () => {
             </span>
           </a>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
@@ -108,7 +105,6 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
             <Button
               variant="ghost"
@@ -132,7 +128,6 @@ const Navbar = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-2">
             <Button
               variant="ghost"
@@ -153,7 +148,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
